@@ -1,0 +1,42 @@
+type Client {
+	id: ID!
+	name: String
+	age: Int
+	documents: [Document]
+	relatives: [Relative]
+}
+
+type Document {
+	id: ID!
+	type: String
+	number: String
+	issueDate: String
+	expiryDate: String
+}
+
+type Relative {
+	id: ID!
+	relationType: String
+	name: String
+	age: Int
+}
+
+query ClientOnlyInfo($id: ID) {
+	client(id: $id) {
+		id
+		name
+		age
+	}
+}
+
+query ClientDocuments($id: ID) {
+	client(id: $id) {
+		documents
+	}
+}
+
+query ClientRelatives($id: ID) {
+	client(id: $id) {
+		relatives
+	}
+}
